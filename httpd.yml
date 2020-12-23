@@ -1,0 +1,59 @@
+- hosts: all
+  vars:
+          auth: "AuthConfig"
+  vars_prompt:
+          - name: "auth_user"
+            prompt: "Enter http Auth user"
+            private: no
+          - name: "auth_pass"
+            prompt: "Enter http Auth pass"
+  tasks:
+  - name: "Installing Httpd package"
+    package:
+          name: "httpd"
+  
+  - name: "Starting Httpd services"
+    service:
+          name: "httpd"
+          state: started
+
+  - name: "Hosting Webpage on the Webserver"
+    template:
+          src: "index.html.j2"
+          dest: "/var/www/html/index.html"
+ 
+  - name: "Configuring Http Authentication"
+    template:
+          src: "authfile.j2"
+          dest: "/etc/httpd/conf/httpd.conf"
+    notify: "Restarting httpd service"
+
+  - name: "Configuring .htaccess file"
+    copy:
+          src: "htaccess_file"
+          dest: "/var/www/html/.htaccess"
+
+  - name: "Installing Python3.6 if not already installed"
+    package:
+          name: "python36"
+
+  - name: "Installing passlib python library"
+    pip:
+          name: "passlib"
+
+  - name: "Creating user & pass for http Authentication"
+    htpasswd:
+          path: "/etc/www.passwd"
+          name: "{{ auth_user }}"
+          password: "{{ auth_pass }}"
+
+  - name: "Use this URL to access Webpage"
+    debug:
+            msg: "http://{{ ansible_facts['enp0s8']['ipv4']['address'] }}/"
+
+  handlers:
+  - name: "Restarting httpd service"
+    service:
+          name: "httpd"
+          state: restarted
+

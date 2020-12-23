@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Secure Webpage</title>
+	<style type="text/css">
+		body {
+			background-image: url('https://images4.alphacoders.com/210/thumb-1920-210198.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			margin: 0;
+		}
+		.ext {
+			color: white;
+			text-align: center;
+			border: thin solid #0000FF;
+			height: 10em;
+			background-image: url('https://ak.picdn.net/shutterstock/videos/8455738/thumb/1.jpg');			
+		}
+		#indiv {
+			margin-top: 5px;
+		}
+		.center {
+			display: block;
+			padding-top: 2em;
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+			font-size: 2em;
+			color: white;
+		}
+		#haproxy {
+			font-size: 5em;
+			border-radius: 5px;
+			color: red;
+		}
+		#ansible {
+			color: red;
+			font-size: 5em;
+			border-radius: 5px;
+		}
+		#web {
+			font-size: 3em;
+			color: yellow;
+		}
+		#ip {
+			border: thin solid white;
+			color: black;
+			background-color: white;
+			font-size: 3em;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="ext">
+		<div id="indiv">
+			<font id="web">WebServer IP Address: </font>
+			<font id="ip">{{ ansible_facts['enp0s8']['ipv4']['address'] }}</font><hr width="80%">
+			<font id="haproxy">What is Idempotence?</font>
+		</div>
+	</div>
+	<div>
+		<font class="center">Idempotence is the property of certain operation in mathematics & computer science, that can be applied multiple times without changing the result beyond initial application.</font>
+	</div>
+</body>
+</html>
