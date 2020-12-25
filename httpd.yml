@@ -19,18 +19,18 @@
 
   - name: "Hosting Webpage on the Webserver"
     template:
-          src: "index.html.j2"
+          src: "requirements/index.html.j2"
           dest: "/var/www/html/index.html"
  
   - name: "Configuring Http Authentication"
     template:
-          src: "authfile.j2"
+          src: "requirements/authfile.j2"
           dest: "/etc/httpd/conf/httpd.conf"
     notify: "Restarting httpd service"
 
   - name: "Configuring .htaccess file"
     copy:
-          src: "htaccess_file"
+          src: "requirements/htaccess_file"
           dest: "/var/www/html/.htaccess"
 
   - name: "Installing Python3.6 if not already installed"
