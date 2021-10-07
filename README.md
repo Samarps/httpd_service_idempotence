@@ -7,4 +7,4 @@ Ansible is a great tool for Configuration Management & Automation. This Task was
 ## ARTH Task 11.3
 - Restarting HTTPD (Apache Webserver) Service is not idempotent in nature & also consumes more resources. Suggest a way to rectify this challenge in Ansible PlayBook.
 
-Hope you guys learned something new! Thankyou, I'll meet you in the next one. 😊
+Hope you guys learned something new. Thankyou, I'll meet you in the next one. 😊
