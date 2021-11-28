@@ -4,7 +4,7 @@ I've created an Ansible Playbooks which retains the imdempotency of the Ansible 
 
 Ansible is a great tool for Configuration Management & Automation. This Task was given by Sir Vimal Daga in the Arth training recently.
 
-## ARTH Task 11.3
+## Description
 - Restarting HTTPD (Apache Webserver) Service is not idempotent in nature & also consumes more resources. Suggest a way to rectify this challenge in Ansible PlayBook.
 
 <br>
